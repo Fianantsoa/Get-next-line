@@ -31,8 +31,8 @@ In summary, `get_next_line` is a fundamental C systems programming exercise that
 First, clone the repository:
 
 ```bash
-git clone git@vogsphere.42antananarivo.mg:vogsphere/intra-uuid-5916f39c-6256-41de-a41d-0258fff90513-7286879-finoment GNL
-cd GNL
+git clone https://github.com/Fianantsoa/Get-next-line.git
+cd Get-next-line
 ```
 
 > Note: The repository URL may change depending on the project or user.
