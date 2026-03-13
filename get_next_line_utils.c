@@ -6,7 +6,7 @@
 /*   By: finoment <finoment@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 13:21:01 by finoment          #+#    #+#             */
-/*   Updated: 2026/03/05 13:56:01 by finoment         ###   ########.fr       */
+/*   Updated: 2026/03/13 11:52:39 by finoment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,33 +27,33 @@ size_t	ft_strlen(const char *str)
 char	*ft_strdup(const char *s)
 {
 	int		i;
-	int		lens;
+	int		len;
 	char	*dup;
 
-	lens = 0;
-	while (s[lens] != 0)
-		lens++;
-	dup = (char *) malloc(sizeof(char) * (lens + 1));
+	if (s[0] == '\0')
+		return (NULL);
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	dup = (char *) malloc(sizeof(char) * (len + 1));
 	if (!dup)
 		return (NULL);
 	i = 0;
-	while (i < lens)
+	while (i < len)
 	{
 		dup[i] = s[i];
 		i++;
 	}
-	dup[i] = '\0';
+	dup[len] = '\0';
 	return (dup);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	j;
 	char	*str;
 
-	if (!s2)
-		return (NULL);
 	if (!s1)
 		s1 = "\0";
 	str = (char *)(malloc(ft_strlen(s1) + ft_strlen(s2) + 1));
@@ -117,5 +117,7 @@ char	*ft_get_line(char **stash)
 	line[j] = '\0';
 	*stash = ft_strdup(tmp + i);
 	free(tmp);
+	if (*stash && **stash == '\0')
+		free(*stash);
 	return (line);
 }

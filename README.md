@@ -91,13 +91,13 @@ This is a test
 Compile your project with:
 
 ```bash
-cc -Wall -Wextra -Werror main.c get_next_line.c get_next_line_utils.c -D BUFFER_SIZE=4
+cc -Wall -Wextra -Werror main.c get_next_line.c get_next_line_utils.c -D BUFFER_SIZE=42
 ```
 
 > Note: `BUFFER_SIZE` defines the number of bytes read per call to `read()`.
 > A small value (e.g., 4) reads in small chunks, while a large value reads more data at once.
 > This affects performance but should not change the function’s behavior.
-> The `-D BUFFER_SIZE=4` sets the macro at compilation without modifying the header file.
+> The `-D BUFFER_SIZE=42` sets the macro at compilation without modifying the header file.
 
 Example:
 
@@ -121,8 +121,8 @@ This is a test
 ### Classic References
 
 * Linux manual pages (`man free`, `man read`, `man malloc`)
-* W3Schools — C programming tutorials
-* cppreference.com
+* W3Schools — C programming tutorials https://www.w3schools.com/c/
+* Tutorialspoint C https://www.tutorialspoint.com/cprogramming/index.htm
 
 ### AI Usage
 

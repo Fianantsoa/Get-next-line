@@ -6,7 +6,7 @@
 /*   By: finoment <finoment@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 11:52:14 by finoment          #+#    #+#             */
-/*   Updated: 2026/03/05 15:11:29 by finoment         ###   ########.fr       */
+/*   Updated: 2026/03/13 11:55:26 by finoment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*get_next_line(int fd)
 {
 	char			*buffer;
-	char			*line;
+	char			*temp;
 	static char		*stash;
 	ssize_t			bytes;
 
@@ -25,16 +25,18 @@ char	*get_next_line(int fd)
 	while (!ft_strchr(stash, '\n'))
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE + 0);
-		if (bytes <= 0)
+		if (bytes < 0)
 		{
-			free(buffer);
 			free(stash);
 			return (NULL);
 		}
+		if (bytes == 0)
+			break ;
 		buffer[bytes] = '\0';
-		stash = ft_strjoin(stash, buffers);
+		temp = stash;
+		stash = ft_strjoin(temp, buffer);
+		free(temp);
 	}
-	line = ft_get_line(&stash);
 	free(buffer);
-	return (line);
+	return (ft_get_line(&stash));
 }
