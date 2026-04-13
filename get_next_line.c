@@ -6,7 +6,7 @@
 /*   By: finoment <finoment@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 11:52:14 by finoment          #+#    #+#             */
-/*   Updated: 2026/03/13 11:55:26 by finoment         ###   ########.fr       */
+/*   Updated: 2026/04/01 12:47:04 by finoment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*get_next_line(int fd)
 	static char		*stash;
 	ssize_t			bytes;
 
-	if (fd == -1 || BUFFER_SIZE + 0 <= 0)
+	if (fd < 0 || BUFFER_SIZE + 0 <= 0)
 		return (NULL);
 	buffer = (char *) malloc(sizeof(char) * BUFFER_SIZE + 1);
 	while (!ft_strchr(stash, '\n'))
@@ -28,7 +28,7 @@ char	*get_next_line(int fd)
 		if (bytes < 0)
 		{
 			free(stash);
-			return (NULL);
+			break ;
 		}
 		if (bytes == 0)
 			break ;
